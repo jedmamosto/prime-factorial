@@ -20,6 +20,7 @@ const isPrime = (givenNumber: number): boolean => {
 
   const sqrtNumber = Math.sqrt(givenNumber)
 
+  // Loops through only ODD numbers since all even numbers except 2 are already not prime
   for (let i = 3; i <= sqrtNumber; i += 2) {
     if (givenNumber % i === 0) return false
   }

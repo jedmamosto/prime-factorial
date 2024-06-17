@@ -5,11 +5,13 @@ import isPrime from '@/utils/isPrime'
 import factorialOf from '@/utils/factorialOf'
 
 export default function Calculator() {
+  // useStates for rendering
   const [inputNumber, setInputNumber] = useState<string>('')
   const [isPrimeResult, setIsPrimeResult] = useState<string>('')
   const [factorialResult, setFactorialResult] = useState<number | undefined>()
   const [errorCheck, setErrorCheck] = useState<boolean>(false)
 
+  // Function that triggers calculation
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
 
@@ -27,6 +29,7 @@ export default function Calculator() {
     setErrorCheck(false)
   }
 
+  // Function that clears input, reset values, and reset error prompt
   const handleClear = (e: FormEvent<HTMLButtonElement>) => {
     e.preventDefault()
 
