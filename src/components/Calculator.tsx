@@ -1,6 +1,8 @@
 'use client'
 
 import React, { FormEvent, useState } from 'react'
+import isPrime from '@/utils/isPrime'
+import factorialOf from '@/utils/factorialOf'
 
 export default function Calculator() {
   const [inputNumber, setInputNumber] = useState<string>('')
@@ -23,60 +25,6 @@ export default function Calculator() {
     setIsPrimeResult(isPrime(givenNumber) ? 'Is Prime' : 'Not Prime')
     setFactorialResult(factorialOf(givenNumber))
     setErrorCheck(false)
-  }
-
-  // First Version, Time Complexity: O(n)
-
-  // function isPrime(givenNumber: number): boolean {
-  //   let primeCount = 0
-
-  //   for (let i = 1; i <= givenNumber; i += 1) {
-  //     if (givenNumber % i === 0) {
-  //       primeCount += 1
-  //     }
-  //   }
-
-  //   return primeCount === 2
-  // }
-
-  // Improved Version, Time Complexity: O(sqrt(n))
-  const isPrime = (givenNumber: number): boolean => {
-    if (givenNumber <= 1) return false
-    if (givenNumber === 2) return true
-    if (givenNumber % 2 === 0) return false
-
-    const sqrtNumber = Math.sqrt(givenNumber)
-
-    for (let i = 3; i <= sqrtNumber; i += 2) {
-      if (givenNumber % i === 0) return false
-    }
-
-    return true
-  }
-
-  // First Version, no recursion
-
-  // const factorialOf = (givenNumber?: number): number => {
-  //   if (typeof givenNumber === 'undefined' || typeof givenNumber !== 'number') {
-  //     throw new Error('Input must be a number')
-  //   }
-
-  //   if (givenNumber < 0) return -1
-
-  //   let total = 1
-
-  //   for (let i = 1; i <= givenNumber; i += 1) {
-  //     total *= i
-  //   }
-
-  //   return total
-  // }
-
-  // Second Version, recursive approach
-  const factorialOf = (givenNumber: number): number => {
-    if (givenNumber < 0) return -1
-
-    return givenNumber === 0 ? 1 : givenNumber * factorialOf(givenNumber - 1) // Use recursion for factorial calculation
   }
 
   const handleClear = (e: FormEvent<HTMLButtonElement>) => {
